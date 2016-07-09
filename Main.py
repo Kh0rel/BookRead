@@ -1,5 +1,5 @@
 from tkinter import *
-import string
+import Books
 
 window = Tk()
 window['bg']='white'
@@ -13,6 +13,11 @@ FrameContent.pack(side=RIGHT, fill=X)
 FrameLabelMenu = Frame(FrameMenu, bg="darkgrey", highlightcolor="grey", width=200, height=100)
 FrameLabelMenu.pack(side=TOP)
 LabelTitle = Label(FrameLabelMenu, text="BookRead", bg="darkgray").pack(padx=80, pady=20)
+
+
+#Show Single Book Details
+singleBookShow = Books.Books("TEST", "TEST", "TEST", FrameContent)
+singleBookShow.single_book()
 
 # Content Menu
 
