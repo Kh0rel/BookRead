@@ -29,3 +29,9 @@ class Books:
 
         bookSingleDesc = Label(frameSingleBook, text= self.desc)
         bookSingleDesc.pack()
+
+        frameButton = Frame(frameSingleBook, width=300, height= 100)
+        frameButton.pack(side=BOTTOM)
+
+        buttonRead = Button(frameButton, text="Read").pack(side=LEFT, padx=10, pady=10)
+        buttonToRead = Button(frameButton, text="ToRead").pack(side=RIGHT, padx=10, pady=10)
