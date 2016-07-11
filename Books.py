@@ -8,7 +8,7 @@ class Books:
         self.img = img
         self.frame = frame
 
-    def show_book(self):
+    def show(self):
         frameBook = Frame(self.frame, width=100, height=200)
         frameBook.pack()
         #image = PhotoImage(file="~/PycharmProjects/BookRead/hp.png")

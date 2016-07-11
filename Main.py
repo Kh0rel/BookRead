@@ -16,8 +16,8 @@ labelTitle = Label(frameLabelMenu, text="BookRead", bg="darkgray").pack(padx=80,
 
 
 #Show Single Book Details
-#singleBookShow = Books.Books("TEST", "TEST", "TEST", frameContent)
-#singleBookShow.single_book()
+singleBookShow = Books.Books("TEST", "TEST", "TEST", frameContent)
+singleBookShow.single_book()
 
 # Show All Books
 
