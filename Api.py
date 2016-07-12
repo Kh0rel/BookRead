@@ -9,3 +9,7 @@ res = requests.get(url)
 
 data = xmltodict.parse(res.text)
 
+print(data['GoodreadsResponse']['reviews']['review'][2]['book']['title'])
+
+for title in data['GoodreadsResponse']['reviews']['review']:
+    print(title['book']['title'])

@@ -1,5 +1,7 @@
+import urllib.request
 from tkinter import *
-
+import io
+from PIL import Image, ImageTk
 
 class Books:
     def __init__(self, title, desc, img, frame):
@@ -11,7 +13,12 @@ class Books:
     def show(self):
         frameBook = Frame(self.frame, width=100, height=200)
         frameBook.pack()
-        #image = PhotoImage(file="~/PycharmProjects/BookRead/hp.png")
+
+        fd = urllib.request.urlopen("https://d.gr-assets.com/books/1444087507m/26847020.jpg")
+        imgFile = io.BytesIO(fd.read())
+        im = ImageTk.PhotoImage(Image.open(imgFile))
+        image = Label(frameBook, image=im)
+        image.grid(row=2, column=0)
         cover = Canvas(frameBook, width=50, height=100)
         cover.pack()
 
@@ -21,6 +28,11 @@ class Books:
     def single_book(self):
         frameSingleBook = Frame(self.frame, width=500, height=500)
         frameSingleBook.pack()
+        fd = urllib.request.urlopen("https://d.gr-assets.com/books/1444087507m/26847020.jpg")
+        imgFile = io.BytesIO(fd.read())
+        im = ImageTk.PhotoImage(Image.open(imgFile))
+        image = Label(frameSingleBook, image=im)
+        image.grid(row=2, column=0)
         coverSingle = Canvas(frameSingleBook, width=100, height=250)
         coverSingle.pack(side=RIGHT)
 
