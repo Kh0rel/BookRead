@@ -1,42 +1,61 @@
 from tkinter import *
-import Books
+from Books import AllBooks
+from Book import SingleBook
+from ToRead import ToRead
+from Read import Read
+
 
 
 window = Tk()
-window['bg']='white'
+window['bg'] = 'white'
 
-frameMenu = Frame(window, bg="gray", width=200, height=600)
+frameMenu = Canvas(window, bg="gray", width=200, height=600)
 frameMenu.pack(side=LEFT, fill=Y)
 
-frameContent = Frame(window, bg="white", width=900, height=600)
-frameContent.pack(side=RIGHT, fill=X)
+
+def content():
+    content.frameContent = Canvas(window, bg="white", width=900, height=600)
+    content.frameContent.pack(side=RIGHT, fill=X)
+
+content()
 
 frameLabelMenu = Frame(frameMenu, bg="darkgrey", highlightcolor="grey", width=200, height=100)
 frameLabelMenu.pack(side=TOP)
 labelTitle = Label(frameLabelMenu, text="BookRead", bg="darkgray").pack(padx=80, pady=20)
 
 
-#Show Single Book Details
-singleBookShow = Books.Books("TEST", "TEST", "TEST", frameContent)
-singleBookShow.single_book()
+def show_books():
+    content.frameContent.pack_forget()
+    content()
+    Books = AllBooks()
+    dict_books = Books.getBooks()
+    Books.showBooks(dict_books, content.frameContent)
 
-# Show All Books
 
-#allBooksShow = Books.Books("Test", "Toto", "Tata", frameContent)
-#allBooksShow.show()
+def show_to_read():
+    content.frameContent.pack_forget()
+    content()
+    toRead = ToRead()
+    dict_to_read = toRead.get()
+    toRead.show(dict_to_read, content.frameContent)
+
+
+def show_read():
+    content.frameContent.pack_forget()
+    content()
+    read = Read()
+    dict_read = read.get()
+    read.show(dict_read, content.frameContent)
+
 
 # Content Menu
 
-frameBooks = Frame(frameMenu, bg="gray")
-frameBooks.pack()
-labelBooks = Label(frameBooks, text="Books", highlightcolor="darkgrey", bg="grey").pack(padx=10, pady=20)
+buttonBooks = Button(frameMenu, text="Books", bg="grey", command=show_books)
+buttonBooks.pack()
+buttonToRead = Button(frameMenu, text="To Read", bg="grey", command=show_to_read)
+buttonToRead.pack()
+buttonRead = Button(frameMenu, text="Read", bg="grey", command=show_read)
+buttonRead.pack()
 
-frameRead = Frame(frameMenu, bg="gray")
-frameRead.pack()
-labelRead = Label(frameRead, text="Read", highlightcolor="darkgrey", bg="grey").pack(padx=10, pady=20)
-
-frameToRead = Frame(frameMenu, bg="gray")
-frameToRead.pack()
-labelToRead = Label(frameToRead, text="To Read", highlightcolor="darkgrey", bg="grey").pack(padx=10, pady=20)
 
 window.mainloop()
